@@ -1,0 +1,71 @@
+<html>
+	<head>
+		<title>W02: task3 </title>
+	</head>
+	<body>
+		<h3> ３つの頂点の座標を設定し、それらを結んでできる三角形の面積を求める</h3><br>
+		<label for="V0">Vertex0 : x
+		</label>
+		<input type = "number" id = "x0" value = "0">
+		<label for="V0"> y
+		</label>
+		<input type = "number" id = "y0" value = "0">
+		<label for="V0"> z
+		</label>
+		<input type = "number" id = "z0" value = "0"><br>		
+				
+		<label for="V1">Vertex1 : x
+		</label>
+		<input type = "number" id = "x1" value = "0">
+		<label for="V1"> y
+                </label>
+                <input type = "number" id = "y1" value = "0">
+                <label for="V1"> z
+                </label>
+                <input type = "number" id = "z1" value = "0"><br>
+		
+		<label for="V2">Vertex2 : x
+                </label>
+                <input type = "number" id = "x2" value = "0">
+                <label for="V2"> y
+                </label>
+                <input type = "number" id = "y2" value = "0">
+                <label for="V2"> z
+                </label>
+                <input type = "number" id = "z2" value = "0"><br><br>
+		
+		<input type = "button" value = "calcurate" onclick = "clickBtn()"><br>
+		<p>Area of a triangle <span id = "span"></span></p>	
+
+		<script src = "vec3.js"></script>
+		<script>
+			function clickBtn(){
+				const x0 = document.getElementById("x0");
+				const y0 = document.getElementById("y0");
+				const z0 = document.getElementById("z0");
+				const x1 = document.getElementById("x1");
+				const y1 = document.getElementById("y1");
+				const z1 = document.getElementById("z1");
+				const x2 = document.getElementById("x2");
+				const y2 = document.getElementById("y2");
+				const z2 = document.getElementById("z2");
+				var v0 = new Vec3(x0.value,y0.value,z0.value);
+				var v1 = new Vec3(x1.value,y1.value,z1.value);
+				var v2 = new Vec3(x2.value,y2.value,z2.value);
+				
+				var S  = AreaOfTriangle(v0,v1,v2);
+				document.getElementById("span").textContent = S;
+			}
+			
+			function AreaOfTriangle(v0,v1,v2){
+				var a = v0.sub(v2);
+				var b = v1.sub(v2);
+				var c = a.cross(b);
+				var area = c.length() / 2;
+				return area;
+			}
+
+		</script>
+	</body>
+</html>
+		
