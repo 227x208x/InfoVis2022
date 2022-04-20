@@ -1,5 +1,6 @@
 x,y,r,color
 50,50,40,blue
-50,60,30,white
-45,45,5,black
-55,45,5,black
+50,55,35,white
+42,45,5,black
+58,45,5,black
+50,50,3,red
