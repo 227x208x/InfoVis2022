@@ -1,6 +1,6 @@
-d3.csv("https://:::/InfoVis2022/W08/data.csv")
+d3.csv("https://227x208x.github.io/InfoVis2022/W08/data.csv")
     .then( data => {
-	data.forEach( d => { d.x = +d.x; d.y = +d.y; });
+	data.forEach( d =>  {d.value = +d.value;});
 
 	var config = {
 	    parent: '#drawing_region',
@@ -21,12 +21,12 @@ class BarChart{
     constructor( config, data ){
 	this.config = {
 	    parent: config.parent,
-	    width: config.width || 256
+	    width: config.width || 256,
 	    height: config.height || 128,
 	    margin: config.margin || {top:10, right:10, bottom:20, left:60}
 	}
 	this.data = data;
-	tihs.init();
+	this.init();
     }
 
     init() {
@@ -59,7 +59,8 @@ class BarChart{
 	self.xaxis_group = self.chart.append('g')
 	    .attr('transform', `translate(0, ${self.inner_height})`);
 
-	self.yaxis_group = self.chart.append('g');
+	self.yaxis_group = self.chart.append('g')
+	    .attr('transform', `translate(0,0)`);
 
     }
 
@@ -83,5 +84,10 @@ class BarChart{
 	    .attr("y",d => self.yscale(d.label))
 	    .attr("width", d => self.xscale(d.value))
 	    .attr("height", self.yscale.bandwidth());
+
+	self.xaxis_group
+	    .call( self.xaxis );
+	self.yaxis_group
+	    .call( self.yaxis );
     }
 }
