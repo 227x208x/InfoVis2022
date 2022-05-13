@@ -6,7 +6,7 @@ d3.csv("https://227x208x.github.io/InfoVis2022/W08/task3_data.csv")
 	    parent: '#drawing_region',
 	    width: 256,
 	    height: 256,
-	    radius: Math.min(256, 256) / 2
+	    radius: 100
 	};
 
 	const pie_chart = new PieChart( config, data );
@@ -23,7 +23,7 @@ class PieChart{
 	    parent: config.parent,
 	    width: config.width || 256,
 	    height: config.height || 256,
-	    radius: config.radius || Math.min( 256, 256 ) / 2
+	    radius: config.radius || 100
 	}
 	this.data = data;
 	this.init();
@@ -63,6 +63,6 @@ class PieChart{
 	    .attr("d",self.arc)
 	    .attr("fill", "black")
 	    .attr("stroke", "white")
-	    .style("stroke-width", "2px")
+	    .style("stroke-width", "2px");
     }
 }
