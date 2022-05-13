@@ -5,8 +5,7 @@ d3.csv("https://227x208x.github.io/InfoVis2022/W08/task2_data.csv")
 	var config = {
 	    parent: '#drawing_region',
 	    width: 256,
-	    height: 128,
-	    margin: {top:10, right:10, bottom:20, left:60}
+	    height: 128
 	};
 
 	const line_chart = new LineChart( config, data );
@@ -22,7 +21,7 @@ class LineChart{
 	this.config = {
 	    parent: config.parent,
 	    width: config.width || 256,
-	    height: config.height || 128,
+	    height: config.height || 128
 	}
 	this.data = data;
 	this.init();
@@ -50,8 +49,8 @@ class LineChart{
     render() {
 	let self = this;
 
-	svg.append('path')
-	    .attr('d', area(self.data))
+	self.svg.append('path')
+	    .attr('d', self.area(self.data))
 	    .attr('stroke', 'black')
 	    .attr('fill', 'black');
     }
