@@ -42,9 +42,12 @@ class PieChart{
 	    .value( d => d.value );
 
 	self.arc = d3.arc()
-	    .innerRadius(self.config.radius/2)
+	    .innerRadius(self.config.radius/4)
 	    .outerRadius(self.config.radius);
 
+	self.text = d3.arc()
+	    .innerRadius(self.config.radius/2)
+	    .outerRadius(self.config.radius);
     }
 
     update() {
@@ -64,5 +67,7 @@ class PieChart{
 	    .attr("fill", "black")
 	    .attr("stroke", "white")
 	    .style("stroke-width", "2px");
+
+	
     }
 }
